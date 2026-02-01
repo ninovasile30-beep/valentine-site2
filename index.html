@@ -52,6 +52,8 @@ button {
   font-size: 20vw;
   pointer-events: none;
   animation: explode 1.2s forwards;
+  z-index: 10;
+filter: drop-shadow(0 0 20px crimson);
 }
 
 @keyframes explode {
@@ -82,8 +84,8 @@ const no = document.getElementById("no");
 let scale = 1;
 
 // Oui grossit lentement
-yes.addEventListener("mousemove", () => {
-  scale += 0.015;
+document.addEventListener("mousemove", () => {
+  scale += 0.004;
   yes.style.transform = `scale(${scale})`;
 });
 
@@ -107,7 +109,7 @@ function explosion(delay) {
 }
 
 yes.addEventListener("click", () => {
-  const timings = [0, 300, 600, 900, 1200, 1500];
+  const timings = Array.from({ length: 28 }, (_, i) => i * 120);
   timings.forEach(t => explosion(t));
 
   // transition pendant explosion
