@@ -5,6 +5,7 @@
 <title>Valentine</title>
 
 <style>
+  <audio id="music" src="music.mp3"></audio>
 body {
   margin: 0;
   height: 100vh;
@@ -111,6 +112,7 @@ function explosion(delay) {
 yes.addEventListener("click", () => {
   const timings = Array.from({ length: 28 }, (_, i) => i * 120);
   timings.forEach(t => explosion(t));
+  document.getElementById("music").play();
 
   // transition pendant explosion
   setTimeout(() => {
