@@ -2,64 +2,66 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Félicitations</title>
+<title>Félicitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
+  width: 100vw;
   height: 100vh;
   background: linear-gradient(#ff0033, #ff7b9c);
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Comic Neue', cursive;
   overflow: hidden;
-  font-family: "Comic Sans MS", cursive;
 }
 
 h1 {
   color: white;
-  font-size: 48px;
+  font-size: 3rem;
   text-align: center;
-  z-index: 2;
+  z-index: 1;
 }
 
 .rose {
-  position: absolute;
-  font-size: 20vw;
-  z-index: 10;
-  animation: explode 1.2s forwards;
-  filter: drop-shadow(0 0 25px crimson);
+  position: fixed;
+  width: 20vw;
+  height: 20vw;
+  background: radial-gradient(circle, #ff0000, #b30000);
+  border-radius: 50%;
+  animation: explode 1.2s ease-out forwards;
+  pointer-events: none;
 }
 
 @keyframes explode {
-  0% { transform: scale(0); opacity: 1; }
-  100% { transform: scale(1); opacity: 0; }
+  from { transform: scale(0); opacity: 1; }
+  to { transform: scale(1); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<h1>Félicitation, tu es maintenant ma valentine !!!</h1>
+<h1>Félicitation, tu es ma valentine !!!</h1>
 
 <audio autoplay loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function explosion(delay) {
+for (let i = 0; i < 25; i++) {
   setTimeout(() => {
     const rose = document.createElement("div");
     rose.className = "rose";
-    rose.textContent = "🌹";
     rose.style.left = Math.random() * 80 + "vw";
     rose.style.top = Math.random() * 80 + "vh";
     document.body.appendChild(rose);
     setTimeout(() => rose.remove(), 1200);
-  }, delay);
+  }, i * 120);
 }
-
-Array.from({ length: 25 }, (_, i) => i * 120).forEach(explosion);
 </script>
 
 </body>
