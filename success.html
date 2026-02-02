@@ -4,46 +4,47 @@
 <meta charset="UTF-8">
 <title>Félicitations</title>
 
-   <audio autoplay loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
 <style>
 body {
   margin: 0;
   height: 100vh;
-  background: radial-gradient(circle, #ffccd5, #ff4d6d);
+  background: linear-gradient(#ff0033, #ff7b9c);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
   overflow: hidden;
-  color: #8b0000;
+  font-family: "Comic Sans MS", cursive;
 }
 
 h1 {
-  text-align: center;
+  color: white;
   font-size: 48px;
+  text-align: center;
   z-index: 2;
 }
 
 .rose {
   position: absolute;
   font-size: 20vw;
-  animation: explode 1.2s forwards;
   z-index: 10;
-filter: drop-shadow(0 0 20px crimson);
+  animation: explode 1.2s forwards;
+  filter: drop-shadow(0 0 25px crimson);
 }
 
 @keyframes explode {
-  from { transform: scale(0); opacity: 1; }
-  to { transform: scale(1); opacity: 0; }
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<h1>Félicitation,<br>tu es maintenant ma Valentine !!!</h1>
+<h1>Félicitation, tu es maintenant ma valentine !!!</h1>
+
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 function explosion(delay) {
@@ -51,15 +52,14 @@ function explosion(delay) {
     const rose = document.createElement("div");
     rose.className = "rose";
     rose.textContent = "🌹";
-    rose.style.left = Math.random() * window.innerWidth + "px";
-    rose.style.top = Math.random() * window.innerHeight + "px";
+    rose.style.left = Math.random() * 80 + "vw";
+    rose.style.top = Math.random() * 80 + "vh";
     document.body.appendChild(rose);
     setTimeout(() => rose.remove(), 1200);
   }, delay);
 }
 
-// 2–3 explosions page 2
-Array.from({ length: 25 }, (_, i) => i * 120).forEach(t => explosion(t));
+Array.from({ length: 25 }, (_, i) => i * 120).forEach(explosion);
 </script>
 
 </body>
